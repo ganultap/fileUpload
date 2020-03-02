@@ -1,13 +1,9 @@
 <?php 
         include("includes/template/header.php");
+        include("includes/template/content.php");
 ?>
-
-<div class="container mt-5">
-    <div class="card border-light shadow-lg text-white">
-        <h1 class="card-header text-center bg-info">Uploaded files</h1>
-        <div class="card-body col-sm-12 col-lg-4 mr-auto ml-auto small text-dark">
-
             <?php 
+        
         include("functions.php");
          // echo '<pre>', print_r($_FILES), '</pre>';
     if(!empty($_FILES['files']['name'][0])){
@@ -77,16 +73,6 @@
 
     
    ?>
-        </div>
-        <div class="card-footer text-center small bg-info">
-            Copyright &copy 2020
-        </div>
-    </div>
-</div>
-
-
-
 <?php 
-    
     include("includes/template/footer.php");
 ?>

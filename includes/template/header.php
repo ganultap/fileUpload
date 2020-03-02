@@ -14,3 +14,8 @@
 </head>
 
 <body>
+
+<div class="container mt-5">
+    <div class="card border-light shadow-lg text-white">
+        <h1 class="card-header text-center bg-info">Upload multiple files</h1>
+        <div class="card-body col-sm-12 col-lg-4 mr-auto ml-auto small text-dark">

@@ -2,10 +2,8 @@
         include("includes/template/header.php");
         include("includes/template/content.php");
 ?>
-            <?php 
-        
+    <?php 
         include("functions.php");
-         // echo '<pre>', print_r($_FILES), '</pre>';
     if(!empty($_FILES['files']['name'][0])){
         $files = $_FILES['files'];
         $uploaded = array();
@@ -19,17 +17,19 @@
             $file_error = $files['error'][$position];
             $file_ext = explode('.', $file_name);
             $file_ext = strtolower(end($file_ext));
-            // echo $file_tmp, '<br>';
+            
+            //check if the file type is allowed.
             if(checkIFInArray($file_ext, $allowed)) {
                     // echo '<pre>', print_r($file_name), '</pre>';
+                //check if file is empty
                 if (checkFiles($file_error)) {
-                    
+                    //check file size
                     if (checkSize($file_size)) {
 
                             $file_destination = 'uploads/' . $file_name;
-
+                            //check if file already exist
                             if (!checkDuplicate($file_destination)){
-
+                                //check if uploaded or not
                                 if (checkUpload($file_tmp, $file_destination)) {
                                     // echo '<pre>', ($file_destination), '</pre>';
                                     $uploaded[$position] = $file_destination;
@@ -56,23 +56,21 @@
                 $failed[$position] = "<p> <font color=red>{$file_name} file extension '{$file_ext}' is not allowed. </font> </p>";
             }
         }
-
+        //displaying successfully uploaded images.
         if(!empty($uploaded)){
             foreach($uploaded as $imagename){
                 echo "<img src=\"$imagename\" /> <br><br>";
-                echo "<p> <font color=green>{$file_name} successfully uploaded. </font> </p>";
+                echo "<p> <font color=#008080>{$file_name} successfully uploaded. </font> </p>";
             }
         }
-            
+        //notifies failed uploads.
         if (!empty($failed)) {
             echo implode(" ", $failed);
         }
 
     }
 
-
-    
-   ?>
+    ?>
 <?php 
     include("includes/template/footer.php");
 ?>
